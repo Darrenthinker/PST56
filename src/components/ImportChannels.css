@@ -1,0 +1,132 @@
+.import-section {
+  background: white;
+}
+
+.channels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.channel-card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  padding: 2rem;
+  border-radius: 15px;
+  transition: all 0.4s ease;
+  animation: fadeInUp 0.8s ease-out backwards;
+  border: 2px solid transparent;
+}
+
+.channel-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  border-color: #0066cc;
+}
+
+.channel-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.channel-logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  flex-shrink: 0;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.channel-info {
+  flex: 1;
+}
+
+.channel-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.channel-region {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #666;
+  background: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+}
+
+.channel-desc {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.global-transfer {
+  margin-top: 4rem;
+}
+
+.transfer-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 3rem;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+  animation: fadeInUp 1s ease-out backwards;
+  animation-delay: 0.6s;
+}
+
+.transfer-card h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.transfer-icon {
+  font-size: 2.5rem;
+}
+
+.transfer-card p {
+  font-size: 1.1rem;
+  line-height: 2;
+  opacity: 0.95;
+}
+
+.transfer-card strong {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .channels-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .channel-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .transfer-card {
+    padding: 2rem;
+  }
+
+  .transfer-card h3 {
+    font-size: 1.5rem;
+    flex-direction: column;
+  }
+}
+

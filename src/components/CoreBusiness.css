@@ -1,0 +1,164 @@
+.business-section {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.business-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  animation: fadeInUp 0.8s ease-out backwards;
+}
+
+.business-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.business-header {
+  padding: 3rem 2rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.business-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.business-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.business-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.business-position {
+  font-size: 1.2rem;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+}
+
+.business-body {
+  padding: 2.5rem 2rem;
+}
+
+.business-desc {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.business-advantages h4 {
+  font-size: 1.3rem;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.business-advantages ul {
+  list-style: none;
+  padding: 0;
+}
+
+.business-advantages li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  color: #555;
+  font-size: 1.05rem;
+}
+
+.check-icon {
+  color: #0066cc;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.business-flow {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.flow-arrow {
+  display: inline-block;
+  position: relative;
+}
+
+.flow-arrow span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  background: white;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
+
+.arrow-line {
+  position: absolute;
+  top: 50%;
+  left: -150px;
+  right: -150px;
+  height: 2px;
+  background: linear-gradient(90deg, #0066cc, #00aaff, #0066cc);
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .business-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .business-header {
+    padding: 2rem 1.5rem;
+  }
+
+  .business-icon {
+    font-size: 3rem;
+  }
+
+  .business-title {
+    font-size: 1.6rem;
+  }
+
+  .arrow-line {
+    display: none;
+  }
+}
+

@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>深圳市百宸达国际货运代理有限公司 - 专业进出口双向物流服务提供商</title>
+  
+  <!-- React CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- React Icons (使用 ES Module CDN) -->
+  <script type="module">
+    import * as ReactIcons from 'https://cdn.skypack.dev/react-icons/fa';
+    window.ReactIcons = ReactIcons;
+  </script>
+
+  <style>
+    /* 全局样式重置 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* 容器 */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 导航栏 */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+    }
+
+    .nav-link {
+      color: #555;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #2563eb;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      border-radius: 2px;
+    }
+
+    /* Hero 区域 */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      padding: 100px 20px 80px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-subtitle-main {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* 通用 Section */
+    .section {
+      padding: 80px 20px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* 企业历程 */
+    .history-section {
+      background: white;
+    }
+
+    .history-content {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 5rem;
+      margin-bottom: 4rem;
+    }
+
+    .history-heading {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+      letter-spacing: 0.5px;
+    }
+
+    .history-paragraph {
+      font-size: 1.15rem;
+      line-height: 2;
+      color: #444;
+      margin-bottom: 2rem;
+      text-align: justify;
+    }
+
+    .milestone-item {
+      padding: 1.3rem 1.8rem;
+      margin-bottom: 1rem;
+      background: #f8fafc;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-left: 4px solid #2563eb;
+      transition: all 0.3s ease;
+    }
+
+    .milestone-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(37,99,235,0.15);
+    }
+
+    .milestone-item strong {
+      color: #2563eb;
+      font-weight: 700;
+    }
+
+    .image-placeholder {
+      background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+      border-radius: 20px;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6366f1;
+      font-size: 1.2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .image-placeholder:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 3rem 1.8rem;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      transition: height 0.3s ease;
+    }
+
+    .feature-card:hover::before {
+      height: 5px;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+    }
+
+    .feature-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotateY(360deg);
+    }
+
+    .feature-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+    }
+
+    .feature-card p {
+      color: #666;
+      line-height: 1.8;
+    }
+
+    /* 服务内容 */
+    .services-section {
+      background: #f8fafc;
+    }
+
+    .category-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .category-subtitle {
+      text-align: center;
+      color: #2563eb;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 3rem;
+    }
+
+    .import-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    .import-card {
+      background: white;
+      padding: 3.5rem 2.5rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .import-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      transition: height 0.3s ease;
+    }
+
+    .import-card:hover::before {
+      height: 5px;
+    }
+
+    .import-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 50px rgba(37, 99, 235, 0.25);
+      border-color: #e0e7ff;
+    }
+
+    .service-icon-circle {
+      width: 90px;
+      height: 90px;
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-size: 2.5rem;
+      transition: all 0.4s ease;
+    }
+
+    .import-card:hover .service-icon-circle {
+      transform: scale(1.1) rotateY(180deg);
+      background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    }
+
+    .service-card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-card-desc {
+      color: #555;
+      line-height: 1.8;
+      font-size: 1.05rem;
+      text-align: left;
+      padding: 0 0.5rem;
+    }
+
+    /* 出口业务 */
+    .export-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .export-card {
+      background: white;
+      padding: 3rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .export-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+    }
+
+    .export-card-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .export-card-title .service-icon-circle {
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .export-card-desc {
+      color: #555;
+      line-height: 1.9;
+      font-size: 1.08rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .export-features {
+      list-style: none;
+    }
+
+    .export-features li {
+      padding-left: 1.8rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+      color: #444;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .export-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+
+    /* 敏感货 */
+    .sensitive-card {
+      background: white;
+      padding: 3rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 2.5rem;
+      transition: all 0.3s ease;
+      border: 2px solid #e5e7eb;
+    }
+
+    .sensitive-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+      border-color: #e0e7ff;
+    }
+
+    .sensitive-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .sensitive-header .service-icon-circle {
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .sensitive-card-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.5px;
+    }
+
+    .sensitive-subtitle {
+      font-size: 1.1rem;
+      color: #2563eb;
+      font-weight: 600;
+    }
+
+    .sensitive-card-desc {
+      color: #555;
+      line-height: 1.9;
+      font-size: 1.08rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sensitive-features {
+      list-style: none;
+    }
+
+    .sensitive-features li {
+      padding-left: 1.8rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+      color: #444;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .sensitive-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+
+    /* 全球互转 */
+    .global-transfer-card {
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #3b82f6 100%);
+      padding: 4rem 3.5rem;
+      border-radius: 25px;
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      box-shadow: 0 15px 50px rgba(37, 99, 235, 0.4);
+      margin-top: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .transfer-icon {
+      width: 110px;
+      height: 110px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      font-size: 3.5rem;
+      transition: all 0.4s ease;
+    }
+
+    .global-transfer-card:hover .transfer-icon {
+      transform: scale(1.1);
+    }
+
+    .transfer-content {
+      flex: 1;
+      color: white;
+    }
+
+    .transfer-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1.8rem;
+      letter-spacing: 1px;
+    }
+
+    .transfer-desc {
+      font-size: 1.15rem;
+      line-height: 2;
+      opacity: 0.95;
+    }
+
+    /* 关税代付 */
+    .customs-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      padding: 4rem 3.5rem;
+      border-radius: 25px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      border: 2px solid #e0e7ff;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      margin-top: 6rem;
+    }
+
+    .customs-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa);
+    }
+
+    .customs-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15);
+      border-color: #bfdbfe;
+    }
+
+    .customs-icon {
+      width: 110px;
+      height: 110px;
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+      font-size: 3.5rem;
+      transition: all 0.4s ease;
+    }
+
+    .customs-card:hover .customs-icon {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    }
+
+    .customs-content {
+      flex: 1;
+    }
+
+    .customs-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    .customs-desc {
+      color: #555;
+      line-height: 2;
+      font-size: 1.15rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* 联系与合作 */
+    .contact-section {
+      background: #f8fafc;
+      padding: 80px 20px 0;
+    }
+
+    .advantages-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+      color: #1a1a1a;
+      margin-bottom: 2.5rem;
+    }
+
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .advantage-card {
+      background: white;
+      padding: 2rem 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .advantage-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .advantage-icon {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info-box,
+    .contact-form-box {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .box-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 2rem;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-item-new {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .contact-icon-new {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2563eb;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .contact-label-new {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .contact-value-new {
+      color: #333;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0.3rem 0;
+    }
+
+    .social-section {
+      padding-top: 2rem;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .social-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-btn {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border: none;
+      border-radius: 10px;
+      color: #2563eb;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-btn:hover {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.9rem 1.2rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      background: #f9fafb;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    }
+
+    .footer {
+      margin-top: 5rem;
+      padding: 2rem;
+      text-align: center;
+      background: white;
+      border-top: 1px solid #e5e7eb;
+      color: #666;
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2rem; }
+      .section-title { font-size: 1.8rem; }
+      .history-content { grid-template-columns: 1fr; gap: 3rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .import-grid { grid-template-columns: repeat(2, 1fr); }
+      .export-grid { grid-template-columns: 1fr; }
+      .advantages-grid { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; }
+      .global-transfer-card, .customs-card { flex-direction: column; text-align: center; }
+      .nav-menu { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    // 导航栏组件
+    function Navbar() {
+      const [activeSection, setActiveSection] = useState('hero');
+
+      useEffect(() => {
+        const handleScroll = () => {
+          const sections = ['hero', 'history', 'services', 'contact'];
+          const scrollPosition = window.scrollY + 100;
+
+          for (const section of sections) {
+            const element = document.getElementById(section);
+            if (element) {
+              const offsetTop = element.offsetTop;
+              const offsetBottom = offsetTop + element.offsetHeight;
+              
+              if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+                setActiveSection(section);
+                break;
+              }
+            }
+          }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+
+      return (
+        <nav className="navbar">
+          <div className="nav-container">
+            <a href="#hero" className="nav-logo">百宸达国际货运</a>
+            <ul className="nav-menu">
+              <li><a href="#hero" className={activeSection === 'hero' ? 'nav-link active' : 'nav-link'}>首页</a></li>
+              <li><a href="#history" className={activeSection === 'history' ? 'nav-link active' : 'nav-link'}>企业历程</a></li>
+              <li><a href="#services" className={activeSection === 'services' ? 'nav-link active' : 'nav-link'}>服务内容</a></li>
+              <li><a href="#contact" className={activeSection === 'contact' ? 'nav-link active' : 'nav-link'}>联系我们</a></li>
+            </ul>
+          </div>
+        </nav>
+      );
+    }
+
+    // Hero 组件
+    function Hero() {
+      return (
+        <div id="hero" className="hero">
+          <div className="hero-content">
+            <h1 className="hero-title">全球物流解决方案</h1>
+            <h2 className="hero-subtitle-main">专业货运代理服务</h2>
+            <p className="hero-description">
+              提供国际快递、进出口业务、关税代付等全方位物流服务，让您的货物畅行全球。
+            </p>
+          </div>
+        </div>
+      );
+    }
+
+    // 企业历程组件
+    function CompanyHistory() {
+      return (
+        <div id="history" className="section history-section">
+          <div className="container">
+            <h2 className="section-title">企业发展历程</h2>
+            <p className="section-subtitle">
+              深圳市百宸达国际货运代理有限公司自2015年成立以来，始终深耕物流领域
+            </p>
+
+            <div className="history-content">
+              <div className="history-text">
+                <h3 className="history-heading">企业概况</h3>
+                <p className="history-paragraph">
+                  深圳市百宸达国际货运代理有限公司自2015年成立以来，始终深耕物流领域，凭借专业的服务能力与敏锐的市场洞察力，逐步成长为行业内颇具竞争力的物流企业。我们以"高效、可靠、精准"为服务理念，致力于为客户提供全方位的物流解决方案，助力企业打通全球贸易通道。
+                </p>
+                
+                <h3 className="history-heading">发展里程碑</h3>
+                <div className="milestone-item">
+                  <strong>2015年：</strong>公司正式成立，聚焦进口物流运输业务，凭借优质的服务迅速在进口物流市场站稳脚跟，积累了大量稳定的客户资源与丰富的行业经验。
+                </div>
+                <div className="milestone-item">
+                  <strong>2021年：</strong>应对进口清关政策收紧的市场变化，主动战略转型，新增出口业务板块，成立飞宏科技供应链专营欧洲英国敏感货空派，实现从单一进口物流服务向进出口双向物流服务的升级。
+                </div>
+              </div>
+
+              <div className="image-placeholder">
+                📦 全球物流网络
+              </div>
+            </div>
+
+            <div className="features-grid">
+              <div className="feature-card">
+                <div className="feature-icon">🚚</div>
+                <h3>高效运输</h3>
+                <p>优化物流路线，确保货物快速送达</p>
+              </div>
+              <div className="feature-card">
+                <div className="feature-icon">🔒</div>
+                <h3>安全可靠</h3>
+                <p>全程跟踪监控，保障货物安全</p>
+              </div>
+              <div className="feature-card">
+                <div className="feature-icon">🎯</div>
+                <h3>精准服务</h3>
+                <p>专业团队支持，提供定制化方案</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // 服务内容组件
+    function Services() {
+      return (
+        <div id="services" className="section services-section">
+          <div className="container">
+            <h2 className="section-title">服务内容</h2>
+            <p className="section-subtitle">
+              提供全方位的国际物流解决方案，满足您的多样化需求
+            </p>
+
+            {/* 进口业务 */}
+            <h3 className="category-title">进口业务渠道</h3>
+            <p className="category-subtitle">与国际顶尖快递企业深度合作</p>
+            
+            <div className="import-grid">
+              <div className="import-card">
+                <div className="service-icon-circle">✈️</div>
+                <h4 className="service-card-title">DHL</h4>
+                <p className="service-card-desc">全球领先的快递物流企业，速度快、覆盖范围广，适用于高时效要求的文件和高价值货物运输。</p>
+              </div>
+              <div className="import-card">
+                <div className="service-icon-circle">📦</div>
+                <h4 className="service-card-title">UPS</h4>
+                <p className="service-card-desc">强大的全球物流网络，在北美、欧洲市场具有显著优势，提供门到门全程物流服务。</p>
+              </div>
+              <div className="import-card">
+                <div className="service-icon-circle">🚀</div>
+                <h4 className="service-card-title">FEDEX</h4>
+                <p className="service-card-desc">高效的运输效率和优质的客户服务，尤其擅长精密仪器、电子产品等特殊货物的进口运输。</p>
+              </div>
+              <div className="import-card">
+                <div className="service-icon-circle">🌍</div>
+                <h4 className="service-card-title">TNT</h4>
+                <p className="service-card-desc">专注于欧洲市场的物流服务，在欧洲境内的运输网络极为完善，清关便捷、时效稳定。</p>
+              </div>
+            </div>
+
+            {/* 全球互转 */}
+            <div className="global-transfer-card">
+              <div className="transfer-icon">🌐</div>
+              <div className="transfer-content">
+                <h4 className="transfer-title">全球互转业务</h4>
+                <p className="transfer-desc">
+                  除上述四大国际快递渠道外，公司还提供全球互转物流服务，依托合作快递企业的全球网络，实现不同国家和地区之间的货物中转运输。例如，可将货物从东南亚国家通过合作渠道转运至欧洲、美洲，再进口至香港或内地，灵活应对复杂的国际贸易场景。
+                </p>
+              </div>
+            </div>
+
+            {/* 出口业务 */}
+            <h3 className="category-title" style={{marginTop: '5rem'}}>出口业务</h3>
+            <p className="category-subtitle">专注欧洲、英国等重点市场</p>
+            
+            <div className="export-grid">
+              <div className="export-card">
+                <h4 className="export-card-title">
+                  <div className="service-icon-circle">🇪🇺</div>
+                  欧洲市场
+                </h4>
+                <p className="export-card-desc">
+                  覆盖欧盟主要成员国（德国、法国、意大利、西班牙等），依托与当地物流企业的合作，打通"中国-欧洲"空派运输通道。
+                </p>
+                <ul className="export-features">
+                  <li>支持亚马逊 FBA 仓库配送</li>
+                  <li>支持私人地址配送</li>
+                  <li>专业清关团队服务</li>
+                </ul>
+              </div>
+              
+              <div className="export-card">
+                <h4 className="export-card-title">
+                  <div className="service-icon-circle">🇬🇧</div>
+                  英国市场
+                </h4>
+                <p className="export-card-desc">
+                  针对英国脱欧后的物流政策变化，组建专业的英国物流服务团队，熟悉英国清关要求与流程。
+                </p>
+                <ul className="export-features">
+                  <li>定制化清关方案</li>
+                  <li>避免政策导致的延误</li>
+                  <li>保障货物顺利入境</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 敏感货空派 */}
+            <h3 className="category-title">敏感货空派服务</h3>
+            <p className="category-subtitle">专业敏感货运输解决方案</p>
+
+            <div className="sensitive-card">
+              <div className="sensitive-header">
+                <div className="service-icon-circle">📦</div>
+                <div>
+                  <h4 className="sensitive-card-title">一票多件小包</h4>
+                  <p className="sensitive-subtitle">适用于批量敏感货出口</p>
+                </div>
+              </div>
+              <p className="sensitive-card-desc">
+                适用于批量敏感货出口（如F派、香水、护肤品、食品等），将多件货物整合为一票，全程自营一手掌控。
+              </p>
+              <ul className="sensitive-features">
+                <li>全程自营一手掌控</li>
+                <li>提高运输效率</li>
+                <li>节约沟通成本</li>
+                <li>全程物流信息跟踪</li>
+                <li>客户可实时掌握货物动态</li>
+              </ul>
+            </div>
+
+            <div className="sensitive-card">
+              <div className="sensitive-header">
+                <div className="service-icon-circle">📮</div>
+                <div>
+                  <h4 className="sensitive-card-title">单票单件小包</h4>
+                  <p className="sensitive-subtitle">针对跨境卖家一件代发</p>
+                </div>
+              </div>
+              <p className="sensitive-card-desc">
+                针对跨境卖家一件代发，提供专属运输服务。
+              </p>
+              <ul className="sensitive-features">
+                <li>灵活安排航班</li>
+                <li>缩短运输周期</li>
+                <li>分摊运输风险</li>
+                <li>确保货物快速送达</li>
+              </ul>
+            </div>
+
+            {/* 关税代付 */}
+            <div className="customs-card">
+              <div className="customs-icon">💳</div>
+              <div className="customs-content">
+                <h4 className="customs-title">全球关税代付服务</h4>
+                <p className="customs-desc">
+                  我们提供全球范围内的关税代付服务，帮助客户简化清关流程，无需亲自处理复杂的关税支付手续，让国际物流更加便捷。
+                </p>
+                <p className="customs-desc">
+                  无论您是个人还是企业，我们都能够为您提供专业的关税代付解决方案，确保物品和通关，省时省力。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // 联系方式组件
+    function Contact() {
+      const [formData, setFormData] = useState({
+        name: '',
+        phone: '',
+        email: '',
+        service: '',
+        message: ''
+      });
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        alert('感谢您的咨询！我们会尽快与您联系。');
+        setFormData({ name: '', phone: '', email: '', service: '', message: '' });
+      };
+
+      const handleChange = (e) => {
+        setFormData({
+          ...formData,
+          [e.target.name]: e.target.value
+        });
+      };
+
+      return (
+        <div id="contact" className="section contact-section">
+          <div className="container">
+            <h2 className="section-title">联系与合作</h2>
+            <p className="section-subtitle">
+              百宸达国际货运始终秉持<strong>"客户至上、合作共赢"</strong>的理念，期待与更多企业建立长期稳定的合作关系
+            </p>
+
+            {/* 合作优势 */}
+            <h3 className="advantages-title">合作优势</h3>
+            <div className="advantages-grid">
+              <div className="advantage-card">
+                <div className="advantage-icon">✓</div>
+                <p>多年进出口物流经验，熟悉全球物流政策与清关流程</p>
+              </div>
+              <div className="advantage-card">
+                <div className="advantage-icon">✓</div>
+                <p>多元化渠道体系，可灵活匹配不同货物运输需求</p>
+              </div>
+              <div className="advantage-card">
+                <div className="advantage-icon">✓</div>
+                <p>专业服务团队，提供一对一专属物流解决方案</p>
+              </div>
+              <div className="advantage-card">
+                <div className="advantage-icon">✓</div>
+                <p>全程物流跟踪，确保货物运输透明、可控</p>
+              </div>
+            </div>
+
+            <div className="contact-layout">
+              {/* 左侧：联系方式 */}
+              <div className="contact-info-box">
+                <h3 className="box-title">联系方式</h3>
+                
+                <div className="contact-list">
+                  <div className="contact-item-new">
+                    <div className="contact-icon-new">👤</div>
+                    <div className="contact-text">
+                      <h4 className="contact-label-new">联系人</h4>
+                      <p className="contact-value-new">王莎莎</p>
+                    </div>
+                  </div>
+
+                  <div className="contact-item-new">
+                    <div className="contact-icon-new">📞</div>
+                    <div className="contact-text">
+                      <h4 className="contact-label-new">联系电话</h4>
+                      <p className="contact-value-new">+86-13923831023</p>
+                    </div>
+                  </div>
+
+                  <div className="contact-item-new">
+                    <div className="contact-icon-new">📧</div>
+                    <div className="contact-text">
+                      <h4 className="contact-label-new">电子邮箱</h4>
+                      <p className="contact-value-new">wangxnig@pst.com</p>
+                    </div>
+                  </div>
+
+                  <div className="contact-item-new">
+                    <div className="contact-icon-new">🕐</div>
+                    <div className="contact-text">
+                      <h4 className="contact-label-new">工作时间</h4>
+                      <p className="contact-value-new">周一至周五：9:00 - 18:00</p>
+                      <p className="contact-value-new">周六：9:00 - 12:00 (节假日除外)</p>
+                    </div>
+                  </div>
+
+                  <div className="contact-item-new">
+                    <div className="contact-icon-new">📍</div>
+                    <div className="contact-text">
+                      <h4 className="contact-label-new">公司地址</h4>
+                      <p className="contact-value-new">深圳市宝安区福永街道广深公路福永段5号美盈(福永)智汇港南面</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="social-section">
+                  <h4 className="social-title">关注我们</h4>
+                  <div className="social-links">
+                    <button className="social-btn">💬</button>
+                    <button className="social-btn">🔗</button>
+                    <button className="social-btn">💼</button>
+                    <button className="social-btn">📺</button>
+                  </div>
+                </div>
+              </div>
+
+              {/* 右侧：在线咨询表单 */}
+              <div className="contact-form-box">
+                <h3 className="box-title">在线咨询</h3>
+                
+                <form onSubmit={handleSubmit} className="contact-form">
+                  <div className="form-group">
+                    <label htmlFor="name">姓名</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="请输入您的姓名"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="phone">电话</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="请输入您的联系电话"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="email">邮箱</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="请输入您的电子邮箱"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="service">咨询服务</label>
+                    <select
+                      id="service"
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      required
+                    >
+                      <option value="">请选择咨询服务类型</option>
+                      <option value="进口业务">进口业务</option>
+                      <option value="出口业务">出口业务</option>
+                      <option value="关税代付">关税代付</option>
+                      <option value="其他咨询">其他咨询</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="message">咨询内容</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="5"
+                      placeholder="请详细描述您需要或疑问"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                    ></textarea>
+                  </div>
+
+                  <button type="submit" className="submit-btn">提交咨询</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <footer className="footer">
+            <p>© 2015-2025 深圳市百宸达国际货运代理有限公司 版权所有</p>
+          </footer>
+        </div>
+      );
+    }
+
+    // 主应用组件
+    function App() {
+      return (
+        <>
+          <Navbar />
+          <Hero />
+          <CompanyHistory />
+          <Services />
+          <Contact />
+        </>
+      );
+    }
+
+    // 渲染应用
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
+
