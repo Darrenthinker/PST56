@@ -208,6 +208,10 @@ const Contact = () => {
 
       <footer className="footer">
         <p>© 2015-2025 深圳市百宸达国际货运代理有限公司 版权所有</p>
+        <div className="footer-links">
+          <span>友情链接：</span>
+          <a href="https://huodaiagent.com/" target="_blank" rel="noopener noreferrer">货代导航网</a>
+        </div>
       </footer>
     </div>
   )

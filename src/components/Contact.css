@@ -1,7 +1,8 @@
 .contact-section {
   background: #f8fafc;
   padding: 80px 20px 0;
-  padding-bottom: 0;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .contact-section .section-title {
@@ -80,6 +81,7 @@
   grid-template-columns: 1fr 1.2fr;
   gap: 3rem;
   margin-top: 3rem;
+  margin-bottom: 0;
 }
 
 /* 联系方式卡片 */
@@ -246,8 +248,9 @@
 
 /* Footer */
 .footer {
-  margin-top: 3rem;
-  padding: 1.5rem 2rem;
+  margin-top: 0;
+  margin-bottom: 0 !important;
+  padding: 1.5rem 2rem 0.5rem !important;
   text-align: center;
   background: white;
   border-top: 1px solid #e5e7eb;
@@ -257,6 +260,28 @@
 .footer p {
   margin: 0;
   font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+}
+
+.footer-links {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.footer-links span {
+  margin-right: 0.5rem;
+}
+
+.footer-links a {
+  color: #2563eb;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin: 0 0.5rem;
+}
+
+.footer-links a:hover {
+  color: #1e40af;
+  text-decoration: underline;
 }
 
 @keyframes fadeInUp {
