@@ -1,0 +1,650 @@
+import React, { useEffect } from 'react';
+
+const PayDuty = () => {
+  useEffect(() => {
+    // 动态加载 Tailwind CSS
+    if (!document.querySelector('#tailwindcss')) {
+      const script = document.createElement('script');
+      script.src = "https://cdn.tailwindcss.com";
+      script.id = "tailwindcss";
+      document.head.appendChild(script);
+    }
+
+    // 动态加载 Google Fonts
+    if (!document.querySelector('#googlefonts')) {
+      const link = document.createElement('link');
+      link.href = "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap";
+      link.rel = "stylesheet";
+      link.id = "googlefonts";
+      document.head.appendChild(link);
+    }
+    
+    // 添加自定义样式
+    const style = document.createElement('style');
+    style.innerHTML = `
+      body { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+      .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+      .card-hover { transition: all 0.3s ease; }
+      .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
+      .pulse-animation { animation: pulse 2s infinite; }
+      @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+      .floating { animation: floating 3s ease-in-out infinite; }
+      @keyframes floating { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+      .scroll-smooth { scroll-behavior: smooth; }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      // 组件卸载时不移除 Tailwind，以免造成闪烁或重加载开销
+      // 如果对其他页面有严重影响，需要考虑其他方案
+      if (style.parentNode) style.parentNode.removeChild(style);
+    };
+  }, []);
+
+  return (
+    <div className="scroll-smooth text-gray-800 antialiased">
+      {/* Header */}
+      <header className="gradient-bg text-white py-4 sticky top-0 z-50 shadow-lg">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="text-2xl">💰</div>
+              <div>
+                <h1 className="text-xl font-bold">税金代付专家</h1>
+                <p className="text-sm opacity-90">深圳市百宸达国际货运旗下服务</p>
+              </div>
+            </div>
+            <a
+              href="#contact"
+              className="bg-white text-purple-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+            >
+              立即咨询
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="gradient-bg text-white py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              美国DHL/UPS/FEDEX税金代付
+            </h1>
+            <p className="text-2xl md:text-3xl mb-8 font-light">
+              省钱、快捷、无忧，您的跨境物流最佳拍档！
+            </p>
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-12">
+              <div className="bg-red-500 text-white px-8 py-4 rounded-full text-xl font-bold floating">
+                仅需 50元/次
+              </div>
+              <div className="text-lg">
+                <span className="line-through opacity-70">官方关税预付150元</span>
+                <span className="ml-2 text-yellow-300 font-bold">节省66%成本</span>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-6">
+                <div className="text-3xl mb-2">⚡</div>
+                <h3 className="font-semibold mb-2">5分钟处理</h3>
+                <p className="text-sm opacity-90">支付后官网即时更新</p>
+              </div>
+              <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-6">
+                <div className="text-3xl mb-2">🕐</div>
+                <h3 className="font-semibold mb-2">全天候服务</h3>
+                <p className="text-sm opacity-90">8:30-23:30在线</p>
+              </div>
+              <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-6">
+                <div className="text-3xl mb-2">🛡️</div>
+                <h3 className="font-semibold mb-2">专业可靠</h3>
+                <p className="text-sm opacity-90">无验证码烦恼</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              跨境物流税金支付难题
+            </h2>
+            <p className="text-xl text-gray-600">您是否正在为这些问题而烦恼？</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+              <div className="text-4xl mb-4 text-red-500">💸</div>
+              <h3 className="font-semibold mb-2 text-gray-800">费用太高</h3>
+              <p className="text-gray-600 text-sm">
+                官方关税预付手续费150元/次，成本负担重
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+              <div className="text-4xl mb-4 text-orange-500">⏰</div>
+              <h3 className="font-semibold mb-2 text-gray-800">时差困扰</h3>
+              <p className="text-gray-600 text-sm">美国时差问题，无法及时处理</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+              <div className="text-4xl mb-4 text-yellow-500">📱</div>
+              <h3 className="font-semibold mb-2 text-gray-800">验证码难题</h3>
+              <p className="text-gray-600 text-sm">海外收件人验证码获取困难</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+              <div className="text-4xl mb-4 text-blue-500">🚛</div>
+              <h3 className="font-semibold mb-2 text-gray-800">货物滞留</h3>
+              <p className="text-gray-600 text-sm">清关延误，影响客户满意度</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Advantages Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">我们的核心优势</h2>
+            <p className="text-xl text-gray-600">专业解决您的所有税金代付需求</p>
+          </div>
+
+          <div className="space-y-16">
+            {/* Advantage 1 */}
+            <div className="flex flex-col lg:flex-row items-center gap-12">
+              <div className="lg:w-1/2">
+                <div className="bg-gradient-to-r from-green-400 to-blue-500 text-white p-8 rounded-2xl card-hover">
+                  <div className="text-6xl mb-4">💰</div>
+                  <h3 className="text-3xl font-bold mb-4">超低代付费用</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between bg-white bg-opacity-20 rounded-lg p-4">
+                      <span>官方关税预付手续费</span>
+                      <span className="text-2xl font-bold line-through">¥150</span>
+                    </div>
+                    <div className="flex items-center justify-between bg-white bg-opacity-30 rounded-lg p-4">
+                      <span>我们的价格</span>
+                      <span className="text-3xl font-bold text-yellow-300">¥50</span>
+                    </div>
+                    <div className="text-center bg-red-500 rounded-lg p-3">
+                      <span className="text-xl font-bold">节省66%成本！</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="lg:w-1/2">
+                <ul className="space-y-4 text-lg">
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-3 text-xl">✓</span>
+                    <div><strong>行业低价：</strong>比官方节省高达66%的成本</div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-3 text-xl">✓</span>
+                    <div><strong>保证安全：</strong>先代付关税，在官网确认关税已经支付再付费用</div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-3 text-xl">✓</span>
+                    <div><strong>透明收费：</strong>无隐藏费用，汇率当天结算</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Advantage 2 */}
+            <div className="flex flex-col lg:flex-row-reverse items-center gap-12">
+              <div className="lg:w-1/2">
+                <div className="bg-gradient-to-r from-purple-400 to-pink-500 text-white p-8 rounded-2xl card-hover">
+                  <div className="text-6xl mb-4">⚡</div>
+                  <h3 className="text-3xl font-bold mb-4">极速处理</h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="text-center bg-white bg-opacity-20 rounded-lg p-4">
+                      <div className="text-2xl font-bold">5分钟</div>
+                      <div className="text-sm">官网更新</div>
+                    </div>
+                    <div className="text-center bg-white bg-opacity-20 rounded-lg p-4">
+                      <div className="text-2xl font-bold">0等待</div>
+                      <div className="text-sm">验证码处理</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="lg:w-1/2">
+                <ul className="space-y-4 text-lg">
+                  <li className="flex items-start">
+                    <span className="text-purple-500 mr-3 text-xl">⚡</span>
+                    <div><strong>高效操作：</strong>熟悉DHL/UPS/FEDEX流程，快速处理验证码</div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-purple-500 mr-3 text-xl">📝</span>
+                    <div>
+                      <strong>操作简单：</strong>DHL仅需转单号，有官方系统，
+                      <span style={{ color: '#e53e3e' }}>无需收件人验证码</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-purple-500 mr-3 text-xl">🌐</span>
+                    <div><strong>无缝对接：</strong>我们直接与海外收件人沟通</div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-purple-500 mr-3 text-xl">🏠</span>
+                    <div><strong>不限地址：</strong>不限制最终收件地址是亚马逊，私人地址或商业地址</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Advantage 3 */}
+            <div className="flex flex-col lg:flex-row items-center gap-12">
+              <div className="lg:w-1/2">
+                <div className="bg-gradient-to-r from-orange-400 to-red-500 text-white p-8 rounded-2xl card-hover">
+                  <div className="text-6xl mb-4">🕐</div>
+                  <h3 className="text-3xl font-bold mb-4">全天候服务</h3>
+                  <div className="bg-white bg-opacity-20 rounded-lg p-6 text-center">
+                    <div className="text-3xl font-bold mb-2">8:30 - 23:30</div>
+                    <div className="text-lg">北京时间</div>
+                    <div className="text-sm mt-2 opacity-90">覆盖美国全天工作时段</div>
+                  </div>
+                </div>
+              </div>
+              <div className="lg:w-1/2">
+                <ul className="space-y-4 text-lg">
+                  <li className="flex items-start">
+                    <span className="text-orange-500 mr-3 text-xl">🌍</span>
+                    <div><strong>告别时差：</strong>覆盖美国全天工作时段</div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-orange-500 mr-3 text-xl">📞</span>
+                    <div><strong>快速响应：</strong>专业团队7x15小时在线</div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-orange-500 mr-3 text-xl">🚨</span>
+                    <div><strong>紧急处理：</strong>随时处理紧急税金代付需求</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">服务流程</h2>
+            <p className="text-xl text-gray-600">简单三步，轻松搞定</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-blue-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
+                1
+              </div>
+              <h3 className="text-xl font-semibold mb-4">提供信息</h3>
+              <div className="flex justify-center">
+                <div className="text-gray-600 text-left">
+                  <p><strong>DHL:</strong> 转单号和邮编 主营美国 加拿大(有数据权限)</p>
+                  <p><strong>UPS:</strong> 转单号即可</p>
+                  <p><strong>Fedex:</strong> 提供转单号或账单支付</p>
+                </div>
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
+                2
+              </div>
+              <h3 className="text-xl font-semibold mb-4">快速处理</h3>
+              <p className="text-gray-600">
+                我们立即处理验证并完成税金支付<br />一般5分钟内官网更新税金已支付<br />货物立即进入配送
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="bg-purple-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">
+                3
+              </div>
+              <h3 className="text-xl font-semibold mb-4">支付费用</h3>
+              <div className="text-gray-600">
+                <p className="mb-3 text-center">美金税费按当天实时汇率折算和手续费一起支付即可</p>
+                <div className="flex justify-center">
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-2 px-4 flex items-center gap-3 w-fit">
+                    <span className="text-blue-800 font-medium text-sm">实时汇率</span>
+                    <a
+                      href="https://currency-exchange.huodaiagent.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium transition-colors"
+                    >
+                      立即查询
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Verification Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">官网验证步骤</h2>
+            <p className="text-xl text-gray-600">实时查看税金支付状态，透明可靠</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* 步骤1：打开DHL官网 */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="flex items-center mb-6">
+                <div className="bg-blue-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-4">
+                  1
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800">打开DHL官网</h3>
+              </div>
+
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-lg border-l-4 border-blue-500">
+                  <h4 className="font-semibold text-blue-800 mb-2">🌍 英文DHL官网</h4>
+                  <a
+                    href="https://mydhl.express.dhl/gb/en/tracking.html#/track-by-number"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 underline break-all text-sm"
+                  >
+                    mydhl.express.dhl/gb/en/tracking.html
+                  </a>
+                </div>
+
+                <div className="bg-gradient-to-r from-green-50 to-green-100 p-4 rounded-lg border-l-4 border-green-500">
+                  <h4 className="font-semibold text-green-800 mb-2">🇨🇳 中文DHL查询</h4>
+                  <a
+                    href="https://www.5idhl.com/#/queryService/wantSearch/expressSearch"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-green-600 hover:text-green-800 underline break-all text-sm"
+                  >
+                    www.5idhl.com (推荐中文用户)
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* 步骤2：查看支付状态 */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="flex items-center mb-6">
+                <div className="bg-green-500 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mr-4">
+                  2
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800">输入转单号查询</h3>
+              </div>
+
+              <div className="space-y-4">
+                {/* 等待支付状态 */}
+                <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                  <h4 className="font-semibold text-orange-800 mb-3">⏳ 等待支付状态</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="bg-white p-3 rounded border-l-3 border-orange-400">
+                      <strong className="text-red-600">英文：</strong><br />
+                      "On hold awaiting for payment of shipment related fees"
+                    </div>
+                    <div className="bg-white p-3 rounded border-l-3 border-orange-400">
+                      <strong className="text-red-600">中文：</strong><br />
+                      "等待付款中"
+                    </div>
+                  </div>
+                </div>
+
+                {/* 已支付状态 */}
+                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                  <h4 className="font-semibold text-green-800 mb-3">✅ 已支付状态</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="bg-white p-3 rounded border-l-3 border-green-400">
+                      <strong className="text-green-600">英文：</strong><br />
+                      "Payment is received and recorded for shipment related fees"
+                    </div>
+                    <div className="bg-white p-3 rounded border-l-3 border-green-400">
+                      <strong className="text-green-600">中文：</strong><br />
+                      "快件已完成费用支付"
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 温馨提示 */}
+          <div className="mt-12 text-center">
+            <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6 max-w-4xl mx-auto">
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl mr-3">
+                  💡
+                </div>
+                <h4 className="text-xl font-bold text-blue-800">温馨提示</h4>
+              </div>
+              <p className="text-blue-700 text-lg leading-relaxed">
+                我们支付税金后，系统数据会自动同步，<strong className="text-blue-800">5分钟内</strong>即可在官网查到更新的支付信息。
+                <br />建议您收藏以上查询网址，随时跟踪货物状态！
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">增值服务</h2>
+            <p className="text-xl text-gray-600">更多贴心服务，让您省心省力</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl card-hover">
+              <div className="text-4xl mb-4 text-blue-500">💳</div>
+              <h3 className="font-semibold mb-2 text-gray-800">多币种支持</h3>
+              <p className="text-gray-600 text-sm">支持人民币、美元等多种支付方式</p>
+            </div>
+            <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl card-hover">
+              <div className="text-4xl mb-4 text-green-500">📦</div>
+              <h3 className="font-semibold mb-2 text-gray-800">批量处理</h3>
+              <p className="text-gray-600 text-sm">单票或多票货物均可高效代付</p>
+            </div>
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl card-hover">
+              <div className="text-4xl mb-4 text-purple-500">🤝</div>
+              <h3 className="font-semibold mb-2 text-gray-800">全程协助</h3>
+              <p className="text-gray-600 text-sm">提供税金估算、清关建议支持</p>
+            </div>
+            <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl card-hover">
+              <div className="text-4xl mb-4 text-orange-500">🇺🇸</div>
+              <h3 className="font-semibold mb-2 text-gray-800">美国清关服务</h3>
+              <p className="text-gray-600 text-sm">
+                可以提供单独的美国清关服务<br />110USD/票，清关完成之后付费
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">适用场景</h2>
+            <p className="text-xl text-gray-600">无论您是哪种业务类型，我们都能为您提供专业服务</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-xl shadow-lg card-hover">
+              <div className="text-5xl mb-6 text-center">🛒</div>
+              <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">跨境电商</h3>
+              <p className="text-gray-600 text-center">
+                快速代付税金，确保包裹及时送达美国客户，提升买家体验和店铺评分
+              </p>
+            </div>
+            <div className="bg-white p-8 rounded-xl shadow-lg card-hover">
+              <div className="text-5xl mb-6 text-center">🚛</div>
+              <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">货运代理</h3>
+              <p className="text-gray-600 text-center">
+                为客户提供高效清关支持，增强服务竞争力，提升客户满意度
+              </p>
+            </div>
+            <div className="bg-white p-8 rounded-xl shadow-lg card-hover">
+              <div className="text-5xl mb-6 text-center">💎</div>
+              <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">高价值货物</h3>
+              <p className="text-gray-600 text-center">
+                确保奢侈品、电子产品等货物快速通过海关，避免滞留损失
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="gradient-bg text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">立即开始节省成本！</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            只需提供DHL/UPS转单号信息，我们即刻为您处理<br />
+            首次合作即享优惠，长期合作更省心！
+          </p>
+
+          <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-2xl p-8 max-w-md mx-auto mb-8">
+            <div className="text-6xl mb-4">🎯</div>
+            <h3 className="text-2xl font-bold mb-4">限时优惠</h3>
+            <div className="text-4xl font-bold text-yellow-300 mb-2">50元/次</div>
+            <p className="text-sm opacity-90">比官方节省66%成本</p>
+          </div>
+
+          <a
+            href="#contact"
+            className="inline-block bg-red-500 hover:bg-red-600 text-white px-12 py-4 rounded-full text-xl font-bold transition-colors pulse-animation"
+          >
+            立即联系我们
+          </a>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-gray-900 text-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">联系我们</h2>
+            <p className="text-xl text-gray-300">专业团队随时为您服务</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            <div>
+              <h3 className="text-2xl font-bold mb-6">联系方式</h3>
+              <div className="space-y-6">
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                    <span className="text-xl">💬</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold">微信咨询</p>
+                    <p className="text-green-400 text-xl font-mono">13923831023 (王莎莎)</p>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4">
+                    <span className="text-xl">📞</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold">电话咨询</p>
+                    <p className="text-blue-400 text-xl font-mono">13923831023</p>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mr-4">
+                    <span className="text-xl">🌐</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold">官方网站</p>
+                    <p className="text-purple-400 text-xl font-mono">
+                      <a
+                        href="/"
+                        className="text-purple-400 hover:text-purple-300 underline"
+                      >
+                        深圳市百宸达国际货运
+                      </a>
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mr-4">
+                    <span className="text-xl">⚠️</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold">系统故障联系</p>
+                    <p className="text-red-400 text-xl font-mono">
+                      13923831023
+                    </p>
+                    <p className="text-sm text-gray-400">（微信同号）</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-bold mb-6">服务时间</h3>
+              <div className="bg-gray-800 rounded-xl p-6">
+                <div className="text-center mb-4">
+                  <div className="text-4xl mb-2">🕐</div>
+                  <p className="text-2xl font-bold text-green-400">8:30 - 23:30</p>
+                  <p className="text-gray-400">北京时间</p>
+                </div>
+                <div className="border-t border-gray-700 pt-4">
+                  <p className="text-center text-gray-300">
+                    覆盖美国全天工作时段<br />
+                    7天×15小时专业服务
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-16">
+            <p className="text-2xl font-bold text-yellow-400 mb-4">
+              开启高效物流，赢得客户信赖！
+            </p>
+            <p className="text-gray-400">让我们一起为您的跨境物流保驾护航</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-black text-white py-8">
+        <div className="container mx-auto px-4 text-center">
+          <div className="flex items-center justify-center mb-4">
+            <div className="text-2xl mr-3">💰</div>
+            <div>
+              <p className="font-bold">美国DHL/UPS税金代付专家</p>
+              <p className="text-sm text-gray-400">深圳市百宸达国际货运旗下专业服务</p>
+            </div>
+          </div>
+          <p className="text-gray-400 text-sm">
+            © 2024
+            <a
+              href="/"
+              className="text-blue-400 hover:text-blue-300 underline"
+            >
+               深圳市百宸达国际货运代理有限公司
+            </a>
+            | www.pst56.com | 专业税金代付服务
+          </p>
+        </div>
+      </footer>
+
+      {/* Floating Contact Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <a
+          href="#contact"
+          className="bg-green-500 hover:bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-colors floating"
+        >
+          <span className="text-2xl">💬</span>
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export default PayDuty;

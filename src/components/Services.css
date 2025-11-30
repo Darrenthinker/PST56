@@ -356,6 +356,12 @@
   margin-top: 6rem;
 }
 
+.customs-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .customs-card {
   background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   padding: 4rem 3.5rem;
@@ -369,6 +375,7 @@
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .customs-card::before {
@@ -431,6 +438,43 @@
   line-height: 2;
   font-size: 1.15rem;
   margin-bottom: 1.2rem;
+}
+
+.customs-link-hint {
+  margin-top: 1.5rem;
+  display: inline-block;
+  background: #ef4444;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+  transition: all 0.3s ease;
+  text-align: center;
+  animation: floating 2s ease-in-out infinite;
+}
+
+.customs-card:hover .customs-link-hint {
+  background: #dc2626;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+  animation-play-state: paused;
+  transform: translateY(-2px);
+}
+
+.customs-link-hint span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes fadeInUp {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { FaTruck, FaCheckCircle } from 'react-icons/fa'
 import './Services.css'
 
@@ -194,20 +195,28 @@ const Services = () => {
 
         {/* 关税代付 */}
         <div className="customs-section">
-          <div className="customs-card">
-            <div className="customs-icon">
-              <span>💳</span>
+          <Link 
+            to="/pay-duty" 
+            className="customs-card-link"
+          >
+            <div className="customs-card">
+              <div className="customs-icon">
+                <span>💳</span>
+              </div>
+              <div className="customs-content">
+                <h3 className="customs-title">全球关税代付服务</h3>
+                <p className="customs-desc">
+                  我们提供全球范围内的关税代付服务，帮助客户简化清关流程，无需亲自处理复杂的关税支付手续，让国际物流更加便捷。
+                </p>
+                <p className="customs-desc">
+                  无论您是个人还是企业，我们都能够为您提供专业的关税代付解决方案，确保物品和通关，省时省力。
+                </p>
+                <div className="customs-link-hint">
+                  <span>点击了解更多详情</span>
+                </div>
+              </div>
             </div>
-            <div className="customs-content">
-              <h3 className="customs-title">全球关税代付服务</h3>
-              <p className="customs-desc">
-                我们提供全球范围内的关税代付服务，帮助客户简化清关流程，无需亲自处理复杂的关税支付手续，让国际物流更加便捷。
-              </p>
-              <p className="customs-desc">
-                无论您是个人还是企业，我们都能够为您提供专业的关税代付解决方案，确保物品和通关，省时省力。
-              </p>
-            </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

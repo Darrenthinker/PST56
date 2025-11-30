@@ -1,0 +1,26 @@
+# Netlify 配置文件
+
+[build]
+  # 构建命令
+  command = "npm run build"
+  # 发布目录
+  publish = "dist"
+
+# 域名设置：确保 www.pst56.com 不重定向到根域名
+[context.production]
+  command = "npm run build"
+
+# 处理单页应用路由（必须，用于React路由）
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# 强制 www.pst56.com 不重定向（如果根域名也在 Netlify 上）
+# 如果需要阻止 www 重定向到根域名，取消下面的注释
+# [[redirects]]
+#   from = "https://pst56.com/*"
+#   to = "https://www.pst56.com/:splat"
+#   status = 301
+#   force = true
+
