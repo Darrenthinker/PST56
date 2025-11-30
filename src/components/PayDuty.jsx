@@ -282,7 +282,7 @@ const PayDuty = () => {
               <h3 className="text-xl font-semibold mb-4">提供信息</h3>
               <div className="flex justify-center">
                 <div className="text-gray-600 text-left">
-                  <p><strong>DHL:</strong> 转单号和邮编 主营美国 加拿大(有数据权限)</p>
+                  <p><strong>DHL:</strong> 转单号 主营美国 加拿大(有数据权限)</p>
                   <p><strong>UPS:</strong> 转单号即可</p>
                   <p><strong>Fedex:</strong> 提供转单号或账单支付</p>
                 </div>
