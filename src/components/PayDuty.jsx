@@ -282,9 +282,10 @@ const PayDuty = () => {
               <h3 className="text-xl font-semibold mb-4">提供信息</h3>
               <div className="flex justify-center">
                 <div className="text-gray-600 text-left">
-                  <p><strong>DHL:</strong> 转单号 主营美国 加拿大(有数据权限)</p>
+                  <p><strong>DHL:</strong> 仅需转单号 主营美国 加拿大(有数据权限)</p>
                   <p><strong>UPS:</strong> 转单号即可</p>
                   <p><strong>Fedex:</strong> 提供转单号或账单支付</p>
+                  <p style={{ color: '#e53e3e', marginTop: '0.5rem' }}>说明：DHL主营美国加拿大 其他国家三大快递不限制，可发单号查询是否可以代付</p>
                 </div>
               </div>
             </div>
@@ -441,23 +442,23 @@ const PayDuty = () => {
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl card-hover">
               <div className="text-4xl mb-4 text-blue-500">💳</div>
               <h3 className="font-semibold mb-2 text-gray-800">多币种支持</h3>
-              <p className="text-gray-600 text-sm">支持人民币、美元等多种支付方式</p>
+              <p className="text-gray-600 text-sm">支持美元、欧元、英镑等多币种支付</p>
             </div>
             <div className="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl card-hover">
               <div className="text-4xl mb-4 text-green-500">📦</div>
               <h3 className="font-semibold mb-2 text-gray-800">批量处理</h3>
-              <p className="text-gray-600 text-sm">单票或多票货物均可高效代付</p>
+              <p className="text-gray-600 text-sm">单票或多票货物均可高效代付 (价格固定50)</p>
             </div>
             <div className="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl card-hover">
               <div className="text-4xl mb-4 text-purple-500">🤝</div>
-              <h3 className="font-semibold mb-2 text-gray-800">全程协助</h3>
-              <p className="text-gray-600 text-sm">提供税金估算、清关建议支持</p>
+              <h3 className="font-semibold mb-2 text-gray-800">免费查询美国税金</h3>
+              <p className="text-gray-600 text-sm">美国DHL提供转单号，在未签收之前，能即刻确定税金金额 免费查询</p>
             </div>
             <div className="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl card-hover">
               <div className="text-4xl mb-4 text-orange-500">🇺🇸</div>
               <h3 className="font-semibold mb-2 text-gray-800">美国清关服务</h3>
               <p className="text-gray-600 text-sm">
-                可以提供单独的美国清关服务<br />110USD/票，清关完成之后付费
+                可以提供单独的美国清关服务<br />900RMB/票，清关完成之后付费
               </p>
             </div>
           </div>
@@ -503,7 +504,7 @@ const PayDuty = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">立即开始节省成本！</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            只需提供DHL/UPS转单号信息，我们即刻为您处理<br />
+            只需提供DHL/UPS/FEDEX转单号，我们即刻为您处理<br />
             首次合作即享优惠，长期合作更省心！
           </p>
 
