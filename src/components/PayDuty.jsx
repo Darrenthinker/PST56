@@ -97,8 +97,8 @@ const PayDuty = () => {
               </div>
               <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-6">
                 <div className="text-3xl mb-2">🛡️</div>
-                <h3 className="font-semibold mb-2">专业可靠</h3>
-                <p className="text-sm opacity-90">无验证码烦恼</p>
+                <h3 className="font-semibold mb-2">操作简单 专业可靠</h3>
+                <p className="text-sm opacity-90">仅需转单号 无验证码烦恼</p>
               </div>
             </div>
           </div>
@@ -135,7 +135,7 @@ const PayDuty = () => {
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="text-4xl mb-4 text-blue-500">🚛</div>
               <h3 className="font-semibold mb-2 text-gray-800">货物滞留</h3>
-              <p className="text-gray-600 text-sm">清关延误，影响客户满意度</p>
+              <p className="text-gray-600 text-sm">清关派送延误，影响客户满意度</p>
             </div>
           </div>
         </div>
@@ -211,12 +211,12 @@ const PayDuty = () => {
                 <ul className="space-y-4 text-lg">
                   <li className="flex items-start">
                     <span className="text-purple-500 mr-3 text-xl">⚡</span>
-                    <div><strong>高效操作：</strong>熟悉DHL/UPS/FEDEX流程，快速处理验证码</div>
+                    <div><strong>高效操作：</strong>熟悉DHL/UPS/FEDEX流程，快速处理无需等待</div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-purple-500 mr-3 text-xl">📝</span>
                     <div>
-                      <strong>操作简单：</strong>DHL仅需转单号，有官方系统，
+                      <strong>操作简单：</strong>美国DHL仅需转单号，有官方系统，
                       <span style={{ color: '#e53e3e' }}>无需收件人验证码</span>
                     </div>
                   </li>
